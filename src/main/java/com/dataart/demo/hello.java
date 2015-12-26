@@ -29,7 +29,7 @@ public class hello {
         public void handle(HttpExchange t) throws IOException {
 	    cnt++;	
 	    // Debug
-	    System.out.println( String.format("Running hello! received requests: %d",cnt) );
+	    //System.out.println( String.format("Running hello! received requests: %d",cnt) );
 		
             String response = getMessage();
             t.sendResponseHeaders(200, response.length());
