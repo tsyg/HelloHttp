@@ -47,7 +47,7 @@ public class AppTest
 	String message = h.getMessage();
 	String [] words = message.split(" ");
 	assertEquals("The first word should be 'Hello'","Hello,",words[0]);
-	assertEquals("The second word should be 'Hello'","HTTP!",words[1]);
+	assertEquals("The second word should be 'HTTP'","HTTP!",words[1]);
     }
 
         public void testnew()
@@ -56,7 +56,7 @@ public class AppTest
 	hello.MyHandler h = new hello.MyHandler();
 	String message = h.getMessage();
 	String [] words = message.split(" ");
-	assertEquals("The second word should be 'Hello'","Data",words[1]);
+	assertEquals("The third word should be 'Count'","Count",words[2]);   
     }
 
 }
