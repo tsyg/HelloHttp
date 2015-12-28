@@ -56,7 +56,8 @@ public class AppTest
 	hello.MyHandler h = new hello.MyHandler();
 	String message = h.getMessage();
 	String [] words = message.split(" ");
-	assertEquals("The third word should be 'Count'","Count",words[3]);   
+	String w2=words[2].split("=")[0];
+	assertEquals("The third word should be 'Count'","Count",w2);   
     }
 
 }
