@@ -50,7 +50,7 @@ public class AppTest
 	assertEquals("The second word should be 'HTTP'","HTTP!",words[1]);
     }
 
-        public void testnew()
+        public void testWord3()
     {
        
 	hello.MyHandler h = new hello.MyHandler();
