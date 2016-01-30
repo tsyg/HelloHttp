@@ -5,6 +5,7 @@ package com.dataart.demo;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.SocketException;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -13,9 +14,27 @@ import com.sun.net.httpserver.HttpServer;
 public class hello {
 
     public static void main(String[] args) throws Exception {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-        server.createContext("/", new MyHandler());
-        server.start();
+        int port=8000;
+        System.out.println( String.format("Starting hello >> received requests: %d",args.length) );
+        if( args.length > 0 ) {
+            try {
+                port = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                System.err.println("Port argument" + args[0] + " must be an integer.");
+                System.exit(1);
+            }
+        }
+        System.out.println(String.format("Now  starting HttpServer on port %d ", port));
+
+        try {
+            HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+            server.createContext("/", new MyHandler());
+            server.start();
+        } catch (SocketException e) { //
+            // e.g. Exception in thread "main" java.net.SocketException: Permission denied
+            System.out.println(String.format("Cannot start on port %d  (is it already in use?)", port));
+            System.exit(1);
+        }
     }
 
     static class MyHandler implements HttpHandler {
