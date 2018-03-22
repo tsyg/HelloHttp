@@ -41,7 +41,7 @@ public class hello {
 	static int cnt=0;
 	
 	public String getMessage() {
-		return String.format("Hello, HTTP! Count=%d\n",cnt+5);
+		return String.format("Hello, HTTP! Count=%d\n",cnt+7);
 	}
 
         @Override
